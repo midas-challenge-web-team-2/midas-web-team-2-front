@@ -30,11 +30,12 @@ const Dropdown = ({
   const [isOpened, setIsOpened] = useState(false);
   const selected = useMemo(() => {
     const index = items.findIndex((item) => item.value === selectedValue);
-    if (index === -1) return placeholder;
-    else return items[index].summary;
+    if (index === -1) {
+      return selectedValue;
+    } else return items[index].summary;
   }, [selectedValue]);
   return (
-    <_Wrapper width={width} height={height}>
+    <_Wrapper width={width} height={height} className="dropdown">
       <_Selected
         isNotSelected={selectedValue === ''}
         onClick={() => setIsOpened(true)}
