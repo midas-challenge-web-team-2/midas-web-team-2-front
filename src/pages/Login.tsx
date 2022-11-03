@@ -4,6 +4,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import Button from '../components/common/Button';
 import { Link } from 'react-router-dom';
 import { log } from 'util';
+import TeamName from '../components/TeamName';
 
 const Login = () => {
   const [loginContent, setLoginContent] = useState({
@@ -45,7 +46,7 @@ const Login = () => {
   return (
     <_Wrapper>
       <_Form onSubmit={onSubmit}>
-        <_Title>-팀명-</_Title>
+        <TeamName />
         <Input
           value={loginContent.email}
           onChange={onChangeInput}
@@ -81,12 +82,6 @@ const Login = () => {
 };
 
 export default Login;
-
-const _Title = styled.h1`
-  font-size: 36px;
-  color: ${({ theme }) => theme.color.gray9};
-  text-align: center;
-`;
 
 const _Wrapper = styled.div`
   width: 100vw;
