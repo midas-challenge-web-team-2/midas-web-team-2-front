@@ -1,11 +1,13 @@
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
-import { BrowserRouter, Routes } from "react-router-dom";
-import { Route } from "react-router";
-import MainPage from "./pages/Main";
-import AuthCodePage from "./pages/AuthCode";
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import { BrowserRouter, Routes } from 'react-router-dom';
+import { Route } from 'react-router';
+import MainPage from './pages/Main';
+import AuthCodePage from './pages/AuthCode';
 import { AdminHome } from "./pages/AdminHome";
-// import ManageWorkType from "./pages/ManageWorkType";
+      
+import ManageWorkType from './pages/ManageWorkType';
+
 
 const Router = () => {
   return (
