@@ -26,11 +26,11 @@ const data = [
   },
   {
     date: '2022-11-4',
-    workingTime: 8,
+    workingTime: 0,
   },
   {
     date: '2022-11-5',
-    workingTime: 1,
+    workingTime: 0,
   },
 ];
 
