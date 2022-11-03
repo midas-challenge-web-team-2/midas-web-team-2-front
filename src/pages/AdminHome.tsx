@@ -1,27 +1,31 @@
 import styled from 'styled-components';
-import { memberInfoData } from '../components/MemberInfoChangeModal';
+import {
+  memberInfoData,
+  MemberInfoChangeModal,
+} from '../components/MemberInfoChangeModal';
 import memberDummyData from '../archive/memberData.json';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
+const key: ['1', '2', '3'] = ['1', '2', '3'];
 
 const memberData = () => {
   const result = [];
 
   for (let i = 0; i < 3; i++) {
+    const member = key[i];
+
     result.push(
       <_memberInfos>
-        <_memberInfoText>{memberDummyData['member2'].name}</_memberInfoText>
-        <_memberInfoText>{memberDummyData['member2'].email}</_memberInfoText>
+        <_memberInfoText>{memberDummyData[member].name}</_memberInfoText>
+        <_memberInfoText>{memberDummyData[member].email}</_memberInfoText>
+        <_memberInfoText>{memberDummyData[member].phoneNumber}</_memberInfoText>
+        <_memberInfoText>{memberDummyData[member].status}</_memberInfoText>
         <_memberInfoText>
-          {memberDummyData['member2'].phoneNumber}
+          {memberDummyData[member].companyNumber}
         </_memberInfoText>
-        <_memberInfoText>{memberDummyData['member2'].status}</_memberInfoText>
-        <_memberInfoText>
-          {memberDummyData['member2'].companyNumber}
-        </_memberInfoText>
-        <_memberInfoText>{memberDummyData['member2'].rank}</_memberInfoText>
-        <_memberInfoText>
-          {memberDummyData['member2'].entryDate}
-        </_memberInfoText>
-        <_memberInfoText>{memberDummyData['member2'].tenure}</_memberInfoText>
+        <_memberInfoText>{memberDummyData[member].rank}</_memberInfoText>
       </_memberInfos>
     );
   }
@@ -29,33 +33,65 @@ const memberData = () => {
 };
 
 export const AdminHome = () => {
+  const [onModal, setOnModal] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  const codeModal = () => {
+    Swal.fire(
+      '신규 코드가 발급 되었습니다!', // Alert 제목
+      'Code : aofffs#dij23', // Alert 내용
+      'success' // Alert 타입
+    );
+  };
+
   return (
-    <_container>
-      {/* 좌측 사이드 메뉴 (어드민 정보, 검색 바) */}
-      <_sideBar>
-        <_profileWrapper>
-          <_profileBox />
-          <_nameText>어드민</_nameText>
-        </_profileWrapper>
+    <>
+      {onModal ? <MemberInfoChangeModal setOnModal={setOnModal} /> : null}
+      <_container>
+        {/* 좌측 사이드 메뉴 (어드민 정보, 검색 바) */}
+        <_sideBar>
+          <_profileWrapper>
+            <_profileBox />
+            <_nameText>어드민</_nameText>
+          </_profileWrapper>
 
-        <_memberSearchBar type={'search'} placeholder={'구성원 검색'} />
-      </_sideBar>
+          <_memberSearchBar type={'search'} placeholder={'구성원 검색'} />
 
-      {/* 어드민 회사 구성원 정보 */}
-      <_memberWrapper>
-        <_header>
-          <_memberTitle>🌱 구성원</_memberTitle>
-          <_memberButton>코드 발급</_memberButton>
-        </_header>
+          <_memberSetButton
+            style={{ backgroundColor: 'black' }}
+            onClick={() => setOnModal((v) => !v)}
+          >
+            멤버 수정
+          </_memberSetButton>
+        </_sideBar>
 
-        <_memberInfoCategoryWrapper>
-          {memberInfoData.map((infoData, idx) => (
-            <_memberInfoCategory key={idx}>{infoData}</_memberInfoCategory>
-          ))}
-        </_memberInfoCategoryWrapper>
-        <_memberInfoTextWrapper>{memberData()}</_memberInfoTextWrapper>
-      </_memberWrapper>
-    </_container>
+        {/* 어드민 회사 구성원 정보 */}
+        <_memberWrapper>
+          <_header>
+            <_memberTitle>🌱 구성원</_memberTitle>
+            <_memberButton
+              onClick={() => codeModal()}
+              style={{ backgroundColor: '#71CD74' }}
+            >
+              코드 발급
+            </_memberButton>
+            <_memberButton
+              onClick={() => navigate('/workingManage')}
+              style={{ backgroundColor: 'black' }}
+            >
+              근무 환경 설정
+            </_memberButton>
+          </_header>
+
+          <_memberInfoCategoryWrapper>
+            {memberInfoData.map((infoData, idx) => (
+              <_memberInfoCategory key={idx}>{infoData}</_memberInfoCategory>
+            ))}
+          </_memberInfoCategoryWrapper>
+          <_memberInfoTextWrapper>{memberData()}</_memberInfoTextWrapper>
+        </_memberWrapper>
+      </_container>
+    </>
   );
 };
 
@@ -126,16 +162,16 @@ const _memberTitle = styled.h1`
 
 const _memberButton = styled.button`
   height: 40px;
-  width: 100px;
+  width: 110px;
   border-radius: 30px;
   font-size: 16px;
   color: ${(props) => props.theme.color.gray1};
-  background-color: ${(props) => props.theme.color.main};
 `;
 
 const _memberInfoCategoryWrapper = styled.div`
   display: flex;
   justify-content: space-around;
+  margin-bottom: 50px;
 `;
 
 const _memberInfoCategory = styled.p`
@@ -158,4 +194,13 @@ const _memberInfoTextWrapper = styled.div`
 const _memberInfos = styled.div`
   display: flex;
   justify-content: space-around;
+`;
+
+const _memberSetButton = styled.button`
+  width: 170px;
+  height: 40px;
+  border-radius: 30px;
+  font-size: 16px;
+  color: ${(props) => props.theme.color.gray1};
+  margin: 30px 0 0 30px;
 `;
