@@ -7,6 +7,7 @@ import AuthCodePage from './pages/AuthCode';
 import { AdminHome } from "./pages/AdminHome";
       
 import ManageWorkType from './pages/ManageWorkType';
+import FirstLogin from './pages/FirstLogin';
 
 
 const Router = () => {
@@ -17,9 +18,9 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/authorization" element={<AuthCodePage />} />
+        <Route path="/manage-working-type" element={<ManageWorkType />} />
+        <Route path="/first-login" element={<FirstLogin />} />
         <Route path="/adminHome" element={<AdminHome />} />
-
-        {/* <Route path="/manage-working-type" element={<ManageWorkType />} /> */}
       </Routes>
     </BrowserRouter>
   );

@@ -2047,6 +2047,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-toastify@^4.1.0":
+  "integrity" "sha512-u7Ie/7LHBsPVz/iJxi/WlRDS7Gh9csCJACTDXx+pSLuZCm94xpkwzhM3jV1L5ZxP/in0Gp2tFbJ91VrSGr1gyQ=="
+  "resolved" "https://registry.npmjs.org/@types/react-toastify/-/react-toastify-4.1.0.tgz"
+  "version" "4.1.0"
+  dependencies:
+    "react-toastify" "*"
+
 "@types/react@*", "@types/react@^18.0.0":
   "integrity" "sha512-wRJWT6ouziGUy+9uX0aW4YOJxAY0bG6/AOk5AW5QSvZqI7dk6VBIbXvcVgIw/W5Jrl24f77df98GEKTJGOLx7Q=="
   "resolved" "https://registry.npmjs.org/@types/react/-/react-18.0.24.tgz"
@@ -3175,6 +3182,11 @@
     "string-width" "^4.2.0"
     "strip-ansi" "^6.0.0"
     "wrap-ansi" "^7.0.0"
+
+"clsx@^1.1.1":
+  "integrity" "sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg=="
+  "resolved" "https://registry.npmjs.org/clsx/-/clsx-1.2.1.tgz"
+  "version" "1.2.1"
 
 "co@^4.6.0":
   "integrity" "sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ=="
@@ -7685,6 +7697,13 @@
     "workbox-webpack-plugin" "^6.4.1"
   optionalDependencies:
     "fsevents" "^2.3.2"
+
+"react-toastify@*", "react-toastify@^9.1.1":
+  "integrity" "sha512-pkFCla1z3ve045qvjEmn2xOJOy4ZciwRXm1oMPULVkELi5aJdHCN/FHnuqXq8IwGDLB7PPk2/J6uP9D8ejuiRw=="
+  "resolved" "https://registry.npmjs.org/react-toastify/-/react-toastify-9.1.1.tgz"
+  "version" "9.1.1"
+  dependencies:
+    "clsx" "^1.1.1"
 
 "react@^18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
