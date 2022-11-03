@@ -1,5 +1,6 @@
 import { ChangeAbleTime } from '../../pages/ManageWorkType';
 import styled from 'styled-components';
+import { useEffect } from 'react';
 
 interface Props {
   startTime: string;
@@ -10,6 +11,7 @@ interface Props {
 
 const ChangeTime = ({ startTime, endTime, onChangeTime, type }: Props) => {
   const [startHour, startMinute] = startTime.split(':');
+  const [endHour, endMinute] = (endTime || '').split(':');
   const changeTime = (hour: string, minute: string, isEndTime?: boolean) => {
     onChangeTime(isEndTime ? 'endWorkingTime' : type, hour, minute);
   };
@@ -40,19 +42,19 @@ const ChangeTime = ({ startTime, endTime, onChangeTime, type }: Props) => {
           <_TimeButton divided={true}>
             <input
               type="number"
-              value={endTime.split(':')[0]}
+              value={endHour}
               onChange={(event) =>
                 Number(event.target.value) <= 23 &&
-                changeTime(startHour, event.target.value)
+                changeTime(event.target.value, endMinute, true)
               }
             />
             :
             <input
               type="number"
-              value={endTime.split(':')[1]}
+              value={endMinute}
               onChange={(event) =>
                 Number(event.target.value) <= 59 &&
-                changeTime(startHour, event.target.value)
+                changeTime(endHour, event.target.value, true)
               }
             />
           </_TimeButton>

@@ -36,5 +36,6 @@ const _SelectedDays = styled.li`
     width: 12px;
     height: 12px;
     margin-left: 4px;
+    cursor: pointer;
   }
 `;

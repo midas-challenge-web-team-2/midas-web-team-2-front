@@ -4,6 +4,7 @@ import WorkingTypes from '../components/managementWorkingType/WorkingTypes';
 import SelectDay from '../components/managementWorkingType/SelectDay';
 import ChangeTime from '../components/managementWorkingType/ChangeTime';
 import Button from '../components/common/Button';
+import ManageRole from '../components/managementWorkingType/Role';
 
 export type WorkingDayType = '월' | '화' | '수' | '목' | '금' | '토' | '일';
 
@@ -23,6 +24,8 @@ interface WorkingTypeState {
   endWorkingTime?: string;
   duringTime: string;
   restTime: string;
+  departmentList: string[];
+  rankList: string[];
 }
 
 const changeAbleArray: ChangeAbleTime[] = [
@@ -38,6 +41,8 @@ enum ChangeButtonSummary {
   endWorkingTime = '',
 }
 
+export type RoleType = 'departmentList' | 'rankList';
+
 const ManageWorkType = () => {
   const [workingType, setWorkingType] = useState<WorkingTypeState>({
     type: 'fixed',
@@ -47,6 +52,8 @@ const ManageWorkType = () => {
     endWorkingTime: '18:00',
     duringTime: '8:00',
     restTime: '1:00',
+    departmentList: ['개발1팀', '개발2팀'],
+    rankList: ['사원', '팀장', '부장'],
   });
   const changeWorkingType = (type: WorkingType) => {
     setWorkingType({
@@ -69,6 +76,7 @@ const ManageWorkType = () => {
     });
   };
   const onChangeTime = (type: ChangeAbleTime, hour: string, minute: string) => {
+    console.log(type, hour, minute);
     setWorkingType({
       ...workingType,
       [type]: `${hour}:${minute}`,
@@ -80,10 +88,22 @@ const ManageWorkType = () => {
     else if (workingType.type === 'free') return '출근 가능 시간';
     else return '필수 근무 시간';
   }, [workingType.type]);
+  const addRole = (type: RoleType, role: string) => {
+    setWorkingType({
+      ...workingType,
+      [type]: workingType[type].concat(role),
+    });
+  };
+  const deleteRole = (type: RoleType, role: string) => {
+    setWorkingType({
+      ...workingType,
+      [type]: workingType[type].filter((item) => item !== role),
+    });
+  };
   return (
     <_Wrapper>
       <_Flex>
-        <div>
+        <_WorkingType>
           <_Title>근무 유형</_Title>
           <WorkingTypes
             workingType={workingType.type}
@@ -99,8 +119,8 @@ const ManageWorkType = () => {
             days={workingType.restDay}
             onClickRemove={removeFromRestDays}
           />
-        </div>
-        <div>
+        </_WorkingType>
+        <_WorkingTime>
           {changeAbleArray.map((item: ChangeAbleTime) => {
             return (
               <>
@@ -122,7 +142,21 @@ const ManageWorkType = () => {
               </>
             );
           })}
-        </div>
+        </_WorkingTime>
+        <_Role className="role">
+          <ManageRole
+            type="departmentList"
+            addRole={addRole}
+            roleList={workingType.departmentList}
+            deleteRole={deleteRole}
+          />
+          <ManageRole
+            type="rankList"
+            addRole={addRole}
+            roleList={workingType.rankList}
+            deleteRole={deleteRole}
+          />
+        </_Role>
       </_Flex>
       <Button onClick={onClickSave} backgroundColor={'#71CD74'} width={329}>
         저장하기
@@ -146,9 +180,14 @@ const _Flex = styled.div`
   display: flex;
   justify-content: center;
   gap: 0 60px;
+  > .role {
+    width: 230px;
+  }
   > div {
-    :first-of-type {
-      width: 500px;
+    h1:first-of-type {
+      :first-of-type {
+        margin-top: 0;
+      }
     }
     > .workingTime {
       margin-top: 40px;
@@ -159,11 +198,20 @@ const _Flex = styled.div`
   }
 `;
 
+const _WorkingType = styled.div`
+  width: 500px;
+`;
+
+const _WorkingTime = styled.div``;
+
+const _Role = styled.div`
+  > form:last-of-type {
+    margin-top: 30px;
+  }
+`;
+
 const _Title = styled.h1`
   font-size: 36px;
   color: ${({ theme }) => theme.color.gray9};
   margin-top: 32px;
-  :first-of-type {
-    margin-top: 0;
-  }
 `;
