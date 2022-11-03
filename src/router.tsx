@@ -4,8 +4,11 @@ import { BrowserRouter, Routes } from 'react-router-dom';
 import { Route } from 'react-router';
 import MainPage from './pages/Main';
 import AuthCodePage from './pages/AuthCode';
+import { AdminHome } from "./pages/AdminHome";
+      
 import ManageWorkType from './pages/ManageWorkType';
 import FirstLogin from './pages/FirstLogin';
+
 
 const Router = () => {
   return (
@@ -17,6 +20,7 @@ const Router = () => {
         <Route path="/authorization" element={<AuthCodePage />} />
         <Route path="/manage-working-type" element={<ManageWorkType />} />
         <Route path="/first-login" element={<FirstLogin />} />
+        <Route path="/adminHome" element={<AdminHome />} />
       </Routes>
     </BrowserRouter>
   );
