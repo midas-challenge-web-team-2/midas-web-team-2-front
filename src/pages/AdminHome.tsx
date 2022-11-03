@@ -1,4 +1,32 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { memberInfoData } from '../components/MemberInfoChangeModal';
+import memberDummyData from '../archive/memberData.json';
+
+const memberData = () => {
+  const result = [];
+
+  for (let i = 0; i < 3; i++) {
+    result.push(
+      <_memberInfos>
+        <_memberInfoText>{memberDummyData['member2'].name}</_memberInfoText>
+        <_memberInfoText>{memberDummyData['member2'].email}</_memberInfoText>
+        <_memberInfoText>
+          {memberDummyData['member2'].phoneNumber}
+        </_memberInfoText>
+        <_memberInfoText>{memberDummyData['member2'].status}</_memberInfoText>
+        <_memberInfoText>
+          {memberDummyData['member2'].companyNumber}
+        </_memberInfoText>
+        <_memberInfoText>{memberDummyData['member2'].rank}</_memberInfoText>
+        <_memberInfoText>
+          {memberDummyData['member2'].entryDate}
+        </_memberInfoText>
+        <_memberInfoText>{memberDummyData['member2'].tenure}</_memberInfoText>
+      </_memberInfos>
+    );
+  }
+  return result;
+};
 
 export const AdminHome = () => {
   return (
@@ -10,28 +38,22 @@ export const AdminHome = () => {
           <_nameText>어드민</_nameText>
         </_profileWrapper>
 
-        <_memberSearchBar type={"search"} placeholder={"구성원 검색"} />
+        <_memberSearchBar type={'search'} placeholder={'구성원 검색'} />
       </_sideBar>
 
       {/* 어드민 회사 구성원 정보 */}
       <_memberWrapper>
         <_header>
-          <_memberTitle>구성원</_memberTitle>
+          <_memberTitle>🌱 구성원</_memberTitle>
           <_memberButton>코드 발급</_memberButton>
         </_header>
 
         <_memberInfoCategoryWrapper>
-          <>
-            <_memberInfoCategory>이름</_memberInfoCategory>
-            <_memberInfoCategory>이메일</_memberInfoCategory>
-            <_memberInfoCategory>전화번호</_memberInfoCategory>
-            <_memberInfoCategory>상태</_memberInfoCategory>
-            <_memberInfoCategory>사번</_memberInfoCategory>
-            <_memberInfoCategory>직급</_memberInfoCategory>
-            <_memberInfoCategory>입사일</_memberInfoCategory>
-            <_memberInfoCategory>근속시간</_memberInfoCategory>
-          </>
+          {memberInfoData.map((infoData, idx) => (
+            <_memberInfoCategory key={idx}>{infoData}</_memberInfoCategory>
+          ))}
         </_memberInfoCategoryWrapper>
+        <_memberInfoTextWrapper>{memberData()}</_memberInfoTextWrapper>
       </_memberWrapper>
     </_container>
   );
@@ -45,7 +67,7 @@ const _sideBar = styled.div`
   position: relative;
   width: 20%;
   height: 100vh;
-  background-color: ${(props) => props.theme.color.gray2};
+  background-color: ${(props) => props.theme.color.gray3};
 `;
 
 const _profileWrapper = styled.div`
@@ -75,12 +97,12 @@ const _memberSearchBar = styled.input`
   margin: 120px 0 0 30px;
   padding: 0 15px 0 15px;
   border-radius: 20px;
-  font-size: 20px;
-  color: ${(props) => props.theme.color.gray1};
-  background-color: ${(props) => props.theme.color.gray5};
+  font-size: 16px;
+  color: ${(props) => props.theme.color.gray9};
+  background-color: ${(props) => props.theme.color.gray1};
 
   &::-webkit-input-placeholder {
-    color: white;
+    color: ${(props) => props.theme.color.gray5};
   }
 `;
 
@@ -108,16 +130,32 @@ const _memberButton = styled.button`
   border-radius: 30px;
   font-size: 16px;
   color: ${(props) => props.theme.color.gray1};
-  background-color: ${(props) => props.theme.color.gray8};
+  background-color: ${(props) => props.theme.color.main};
 `;
 
 const _memberInfoCategoryWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 100%;
 `;
 
 const _memberInfoCategory = styled.p`
   font-size: 20px;
   font-weight: bold;
+  color: black;
+`;
+
+const _memberInfoText = styled.p`
+  font-size: 18px;
+  color: ${(props) => props.theme.color.gray6};
+  margin: 20px;
+`;
+
+const _memberInfoTextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const _memberInfos = styled.div`
+  display: flex;
+  justify-content: space-around;
 `;
