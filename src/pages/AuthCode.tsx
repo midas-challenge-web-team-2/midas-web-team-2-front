@@ -5,6 +5,7 @@ import Input from '../components/common/Input';
 import { theme } from '../styles/theme';
 import { creatToast } from '../utils/creatToast';
 import { useNavigate } from 'react-router';
+import TeamName from '../components/TeamName';
 
 const AuthCodePage: React.FC = () => {
   const [authcode, setAuthcode] = useState('');
@@ -23,7 +24,7 @@ const AuthCodePage: React.FC = () => {
   return (
     <_Wrapper>
       <_Form onSubmit={onSubmit}>
-        <_Title>-팀명-</_Title>
+        <TeamName />
         <Input
           value={authcode}
           onChange={onChange}
