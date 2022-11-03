@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { memberInfoData } from '../components/MemberInfoChangeModal';
+// import { memberInfoData } from '../components/MemberInfoChangeModal';
 import memberDummyData from '../archive/memberData.json';
 
 const memberData = () => {
@@ -49,9 +49,9 @@ export const AdminHome = () => {
         </_header>
 
         <_memberInfoCategoryWrapper>
-          {memberInfoData.map((infoData, idx) => (
-            <_memberInfoCategory key={idx}>{infoData}</_memberInfoCategory>
-          ))}
+          {/*{memberInfoData.map((infoData, idx) => (*/}
+          {/*  <_memberInfoCategory key={idx}>{infoData}</_memberInfoCategory>*/}
+          {/*))}*/}
         </_memberInfoCategoryWrapper>
         <_memberInfoTextWrapper>{memberData()}</_memberInfoTextWrapper>
       </_memberWrapper>
