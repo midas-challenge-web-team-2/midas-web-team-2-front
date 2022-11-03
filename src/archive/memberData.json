@@ -1,0 +1,32 @@
+{
+  "member1": {
+    "name": "김태경",
+    "email": "xorud7871@gmail.com",
+    "phoneNumber": "010-5234-2131",
+    "status": "근무 태만 중",
+    "companyNumber": "1223",
+    "rank": "신입",
+    "entryDate": "2021-dasfasd02-09",
+    "tenure": "02:23"
+  },
+  "member2": {
+    "name": "김태경",
+    "email": "xorud7871@adsfasdgmail.com",
+    "phoneNumber": "010-5234-2131",
+    "status": "근무 태만 중",
+    "companyNumber": "1223",
+    "rank": "신입",
+    "entryDate": "2021-02-09",
+    "tenure": "02:23"
+  },
+  "member3": {
+    "name": "김태경",
+    "email": "xorud7871@gmail.com",
+    "phoneNumber": "010-5234-2131",
+    "status": "근무 태만 중",
+    "companyNumber": "1223",
+    "rank": "신입",
+    "entryDate": "2021-02-09",
+    "tenure": "02:23"
+  }
+}

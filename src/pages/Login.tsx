@@ -3,7 +3,6 @@ import Input from '../components/common/Input';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import Button from '../components/common/Button';
 import { Link } from 'react-router-dom';
-import { log } from 'util';
 import TeamName from '../components/TeamName';
 
 const Login = () => {
