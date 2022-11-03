@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import TeamName from '../components/TeamName';
 import Input from '../components/common/Input';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import Button from '../components/common/Button';
+import { creatToast } from '../utils/creatToast';
+import { useNavigate } from 'react-router';
 
 const SignUp = () => {
   const [signUpContent, setSignUpContent] = useState({
@@ -12,15 +14,21 @@ const SignUp = () => {
     name: '',
     phoneNumber: '',
   });
+  const navigator = useNavigate();
   const onChangeSignUpContent = (e: ChangeEvent<HTMLInputElement>) => {
     setSignUpContent({
       ...signUpContent,
       [e.target.name]: e.target.value,
     });
   };
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    creatToast('success', '회원가입 성공');
+    navigator('/adminHome');
+  };
   return (
     <_Wrapper>
-      <_Form>
+      <_Form onSubmit={onSubmit}>
         <TeamName />
         <Input
           value={signUpContent.email}
