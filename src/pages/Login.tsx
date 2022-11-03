@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Input from '../components/common/Input';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import Button from '../components/common/Button';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [loginContent, setLoginContent] = useState({
@@ -34,6 +35,15 @@ const Login = () => {
           placeholder="비밀번호를 입력해 주세요."
           name="password"
         />
+        <_LoginOption>
+          <label>
+            <input type="checkbox" />
+            <p>로그인 상태 유지</p>
+          </label>
+          <Link to="/forgetPassword">
+            <p className="forgetPassword">비밀번호를 잊으셨나요?</p>
+          </Link>
+        </_LoginOption>
         <Button onClick={() => {}} backgroundColor={'#71CD74'}>
           로그인 하기
         </Button>
@@ -70,6 +80,28 @@ const _Form = styled.form`
     margin-top: 20px;
   }
   > button {
-    margin-top: 42px;
+    margin-top: 26px;
+  }
+`;
+
+const _LoginOption = styled.div`
+  display: flex;
+  margin-top: 20px;
+  > label {
+    display: flex;
+    align-items: center;
+    > p {
+      margin-left: 4px;
+      font-size: 14px;
+      color: ${({ theme }) => theme.color.gray9};
+    }
+  }
+  > a {
+    margin-left: auto;
+    > p {
+      text-decoration: underline;
+      font-size: 14px;
+      color: ${({ theme }) => theme.color.gray9};
+    }
   }
 `;
