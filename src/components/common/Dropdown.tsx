@@ -40,7 +40,7 @@ const Dropdown = ({
         isNotSelected={selectedValue === ''}
         onClick={() => setIsOpened(true)}
       >
-        {selected}
+        {selectedValue === '' ? placeholder : selected}
         <img src={triangleIcon} alt="드롭다운 내리기" />
       </_Selected>
       {isOpened && (
