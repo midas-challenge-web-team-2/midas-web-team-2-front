@@ -1,14 +1,18 @@
 import styled from 'styled-components';
 import Input from '../components/common/Input';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import Button from '../components/common/Button';
 import { Link } from 'react-router-dom';
+import { log } from 'util';
 
 const Login = () => {
   const [loginContent, setLoginContent] = useState({
     email: '',
     password: '',
   });
+  const [accountIsSaved, setAccountIsSaved] = useState<boolean>(
+    localStorage.getItem('email') !== null
+  );
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
@@ -18,6 +22,26 @@ const Login = () => {
       [e.target.name]: e.target.value,
     });
   };
+  const onClickSaveAccount = () => {
+    if (accountIsSaved) {
+      localStorage.removeItem('email');
+      localStorage.removeItem('password');
+      setAccountIsSaved(false);
+    } else {
+      localStorage.setItem('email', loginContent.email);
+      localStorage.setItem('password', loginContent.password);
+      setAccountIsSaved(true);
+    }
+  };
+  useEffect(() => {
+    if (accountIsSaved) {
+      setLoginContent({
+        ...loginContent,
+        email: localStorage.getItem('email') || '',
+        password: localStorage.getItem('password') || '',
+      });
+    }
+  }, []);
   return (
     <_Wrapper>
       <_Form onSubmit={onSubmit}>
@@ -37,10 +61,14 @@ const Login = () => {
         />
         <_LoginOption>
           <label>
-            <input type="checkbox" />
+            <input
+              onClick={onClickSaveAccount}
+              type="checkbox"
+              checked={accountIsSaved || false}
+            />
             <p>로그인 상태 유지</p>
           </label>
-          <Link to="/forgetPassword">
+          <Link to="/forget-password">
             <p className="forgetPassword">비밀번호를 잊으셨나요?</p>
           </Link>
         </_LoginOption>
