@@ -1,32 +1,26 @@
 {
-  "member1": {
-    "name": "김태경",
-    "email": "xorud7871@gmail.com",
+  "1": {
+    "name": "익명인",
+    "email": "xo871@gmail.com",
     "phoneNumber": "010-5234-2131",
-    "status": "근무 태만 중",
+    "status": "ㅈㄴ 열일",
     "companyNumber": "1223",
-    "rank": "신입",
-    "entryDate": "2021-dasfasd02-09",
-    "tenure": "02:23"
+    "rank": "신입"
   },
-  "member2": {
-    "name": "김태경",
-    "email": "xorud7871@adsfasdgmail.com",
+  "2": {
+    "name": "이이이이",
+    "email": "xoru871@gmail.com",
     "phoneNumber": "010-5234-2131",
-    "status": "근무 태만 중",
+    "status": "근무 태만",
     "companyNumber": "1223",
-    "rank": "신입",
-    "entryDate": "2021-02-09",
-    "tenure": "02:23"
+    "rank": "신입"
   },
-  "member3": {
-    "name": "김태경",
-    "email": "xorud7871@gmail.com",
+  "3": {
+    "name": "아아앙",
+    "email": "xo4441@gmail.com",
     "phoneNumber": "010-5234-2131",
     "status": "근무 태만 중",
     "companyNumber": "1223",
-    "rank": "신입",
-    "entryDate": "2021-02-09",
-    "tenure": "02:23"
+    "rank": "신입"
   }
 }
