@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { ChangeEvent, useState } from 'react';
+import visibleIcon from '../../assets/visibleIcon.svg';
+import invisibleIcon from '../../assets/invisibleIcon.svg';
 
 interface Props extends InputStyleProps {
   type?: 'password' | 'text';
@@ -36,7 +38,13 @@ const Input = ({
         disabled={disabled}
         type={isInVisible ? 'password' : 'text'}
       />
-      {type === 'password' && <img />}
+      {type === 'password' && (
+        <img
+          src={isInVisible ? visibleIcon : invisibleIcon}
+          alt="눈"
+          onClick={() => setIsInVisible((prev) => !prev)}
+        />
+      )}
     </_Wrapper>
   );
 };

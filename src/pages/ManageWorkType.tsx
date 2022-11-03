@@ -5,6 +5,7 @@ import SelectDay from '../components/managementWorkingType/SelectDay';
 import ChangeTime from '../components/managementWorkingType/ChangeTime';
 import Button from '../components/common/Button';
 import ManageRole from '../components/managementWorkingType/Role';
+import { creatToast } from '../utils/creatToast';
 
 export type WorkingDayType = '월' | '화' | '수' | '목' | '금' | '토' | '일';
 
@@ -52,7 +53,7 @@ const ManageWorkType = () => {
     endWorkingTime: '18:00',
     duringTime: '8:00',
     restTime: '1:00',
-    departmentList: ['개발1팀', '개발2팀'],
+    departmentList: ['개발부서', '디자인부서', '인사팀'],
     rankList: ['사원', '팀장', '부장'],
   });
   const changeWorkingType = (type: WorkingType) => {
@@ -82,7 +83,9 @@ const ManageWorkType = () => {
       [type]: `${hour}:${minute}`,
     });
   };
-  const onClickSave = () => {};
+  const onClickSave = () => {
+    creatToast('success', '저장 성공');
+  };
   const inputSummary = useMemo(() => {
     if (workingType.type === 'fixed') return '출근 시간';
     else if (workingType.type === 'free') return '출근 가능 시간';
