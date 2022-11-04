@@ -4,17 +4,20 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import Button from '../components/common/Button';
 import { Link } from 'react-router-dom';
 import TeamName from '../components/TeamName';
+import { useNavigate } from 'react-router';
 
 const Login = () => {
   const [loginContent, setLoginContent] = useState({
     email: '',
     password: '',
   });
+  const navigator = useNavigate();
   const [accountIsSaved, setAccountIsSaved] = useState<boolean>(
     localStorage.getItem('email') !== null
   );
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    navigator('/adminHome');
   };
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setLoginContent({

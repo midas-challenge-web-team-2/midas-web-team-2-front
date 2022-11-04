@@ -24,7 +24,7 @@ const SignUp = () => {
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     creatToast('success', '회원가입 성공');
-    navigator('/adminHome');
+    navigator('/login');
   };
   return (
     <_Wrapper>
